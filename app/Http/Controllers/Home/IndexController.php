@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 
 class IndexController extends Controller
 {
@@ -14,7 +15,9 @@ class IndexController extends Controller
      */
     public function index()
     {
-        echo "Home/Index/Index";
+        echo "Home/Index/Index<br>";
+        $msg = '你好';
+        echo get_zh_len($msg);
     }
 
     /**
@@ -22,9 +25,14 @@ class IndexController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        echo "Home/Index/create";
+        echo "Home/Index/create<br>";
+        $user = new User;
+        $id6d = $request->input('id6d');
+        $password = $request->input('password');
+        $info = $user->insert_sql($id6d,$password);
+        echo $info;
     }
 
     /**
@@ -97,7 +105,10 @@ class IndexController extends Controller
      */
     public function show($id)
     {
-        echo "Home/Index/show";
+        echo "Home/Index/show<br>";
+        $user = new User;
+        $info = $user->select_sql($id);
+        dump($info);
     }
 
     /**
@@ -120,7 +131,11 @@ class IndexController extends Controller
      */
     public function update(Request $request, $id)
     {
-        echo "Home/Index/update";
+        echo "Home/Index/update<br>";
+        $password = $request->input('password');
+        $user = new User;
+        $info = $user->update_sql($id,$password);
+        echo $info;
     }
 
     /**
@@ -131,6 +146,9 @@ class IndexController extends Controller
      */
     public function destroy($id)
     {
-        echo "Home/Index/destroy";
+        echo "Home/Index/destroy<br>";
+        $user = new User;
+        $info = $user->delete_sql($id);
+        echo $info;
     }
 }
