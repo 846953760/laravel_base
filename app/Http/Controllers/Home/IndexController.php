@@ -31,7 +31,10 @@ class IndexController extends Controller
         $user = new User;
         $id6d = $request->input('id6d');
         $password = $request->input('password');
-        $info = $user->insert_sql($id6d,$password);
+        //使用原生DB语句插入
+        // $info = $user->insert_sql($id6d,$password);
+        //使用查询构造器语句插入
+        $info = $user->query_builder_insert($id6d,$password);
         echo $info;
     }
 
@@ -107,7 +110,11 @@ class IndexController extends Controller
     {
         echo "Home/Index/show<br>";
         $user = new User;
-        $info = $user->select_sql($id);
+        //使用原生DB语句查询
+        // $info = $user->select_sql($id);
+        dump($info);
+        //使用查询构造器语句查询
+        $info = $user->query_builder_select();
         dump($info);
     }
 
@@ -134,7 +141,10 @@ class IndexController extends Controller
         echo "Home/Index/update<br>";
         $password = $request->input('password');
         $user = new User;
-        $info = $user->update_sql($id,$password);
+        //使用原生DB语句修改
+        // $info = $user->update_sql($id,$password);
+        //使用查询构造器语句修改
+        $info = $user->query_builder_update($id,$password);
         echo $info;
     }
 
@@ -148,7 +158,10 @@ class IndexController extends Controller
     {
         echo "Home/Index/destroy<br>";
         $user = new User;
-        $info = $user->delete_sql($id);
+        //使用原生DB语句删除
+        // $info = $user->delete_sql($id);
+        //使用查询构造器语句删除
+        $info = $user->query_builder_delete($id);
         echo $info;
     }
 }
