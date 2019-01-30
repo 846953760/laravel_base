@@ -33,9 +33,15 @@ class IndexController extends Controller
         $password = $request->input('password');
         //使用原生DB语句插入
         // $info = $user->insert_sql($id6d,$password);
+        
         //使用查询构造器语句插入
-        $info = $user->query_builder_insert($id6d,$password);
-        echo $info;
+        // $info = $user->query_builder_insert($id6d,$password);
+        
+        //使用ORM插入
+        $user->id6d = $id6d;
+        $user->password = $password;
+        $user->save();
+        // echo $info;
     }
 
     /**
@@ -112,10 +118,41 @@ class IndexController extends Controller
         $user = new User;
         //使用原生DB语句查询
         // $info = $user->select_sql($id);
-        dump($info);
+        
         //使用查询构造器语句查询
-        $info = $user->query_builder_select();
-        dump($info);
+        // $info = $user->query_builder_select();
+        
+        //使用ORM查询,Eloquent底层基于查询构造器来实现的,所以也可以直接使用查询构造器的方法
+        $info = $user::all();
+        // $info = $user::get();
+        // $info = $user::first()->toArray();
+        // $info = $user::find(11);
+        // $info = $user::find([10,12,13])->toArray();
+        // $info = $user::where('id','=',10)->get();
+        // $info = $user::where('password','like','%abc%')->get()->toArray();
+        // $info = $user::whereRaw('id = ? or id = ?',[11,12])->get(['id6d','password'])->toArray();
+        // $info = $user::whereRaw('id in (11,12,13)')->get()->toArray();
+        // $info = $user::whereRaw('id > ? and id < ?',[10,12])->get()->toArray();
+        // $info = $user::where('id','>','10')->orderBy('id','desc')->take(2)->get()->toArray();
+        // $info = $user::where('id','>',20)->orderBy('id','desc')->get(['id','id6d','password'])->toJson();
+        // $info = $user::where('id','=',$id)->select('id6d','password')->get();
+        // $info = $user::where('id','=',$id)->toSql();    //输出sql
+        // $info = $user::where('id','>',5)->orderBy('id','desc')->offset(1)->limit(5)->toSql();
+        // $info = $user::findOrFail(20);       //findOrFail\firstOrFail 没查到数据返回404页面
+        // $info = $user::count();
+        // $info = $user::sum('id');
+        // $info = $user::avg('id');
+        // $info = $user::max('id');
+        // $info = $user::min('id');
+        // $info = $user::where('id','=',15)->orwhere('id','=',16)->get();
+        // $info = $user::where('id','>',10)->take(3)->skip(2)->get();    //等同于下面
+        // $info = $user::where('id','>',10)->limit(3)->offset(2)->get();
+        foreach ($info as $key => $value) {
+            dump($value);
+        }
+        // return $info;
+        
+        // dump($info);
     }
 
     /**
@@ -143,8 +180,16 @@ class IndexController extends Controller
         $user = new User;
         //使用原生DB语句修改
         // $info = $user->update_sql($id,$password);
+        
         //使用查询构造器语句修改
-        $info = $user->query_builder_update($id,$password);
+        // $info = $user->query_builder_update($id,$password);
+
+        //使用ORM修改
+        /*$info = $user::find($id);
+        $info->password = $password;
+        $info->save();*/
+
+        $info = $user::where('id','>',20)->update(['password'=>'111111']);
         echo $info;
     }
 
@@ -160,8 +205,15 @@ class IndexController extends Controller
         $user = new User;
         //使用原生DB语句删除
         // $info = $user->delete_sql($id);
+        
         //使用查询构造器语句删除
-        $info = $user->query_builder_delete($id);
-        echo $info;
+        // $info = $user->query_builder_delete($id);
+        
+        //使用ORM删除
+        // $info = $user::where('id','=',$id)->delete();
+        // $info = $user::where('id','<',7)->delete();
+        // $info = $user::destroy([7,8]);
+        // $info = $user::truncate();       //清空表
+        // echo $info;
     }
 }

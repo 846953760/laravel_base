@@ -77,4 +77,27 @@ class User extends Model
         // $sql = DB::table('talk_worker')->truncate();
         return dd($sql);
     }
+
+    //使用ORM操作
+    //指定表名,如果不指定的话,表名为class名的复数形式
+    protected $table = 'talk_worker';
+
+    //设置表的主键字段名,如果不指定的话,主键字段名默认为id字段
+    protected $primaryKey = 'id';
+
+    //设置表的主键是自增,如果不设置的话,默认为true(自增),不自增或非数值类型的主键字段,需将此值设置为false
+    public $incrementing = true;
+
+    //时间戳字段,默认为true,认为表里有created_at和updated_at字段.如果表里没有这两字段,设置为false
+    public $timestamps = false;
+
+    //自定义created_at字段名和updated_at字段名
+    const CREATED_AT = "create_time";
+    const UPDATED_AT = "update_time";
+
+    //自定义时间戳保存在数据库里的格式,值为date()的第一个参数,比如U代表时间戳,Y代表2017年
+    protected $dateFormat = 'U';
+
+    //自定义数据库连接,默认使用的config/database.php中的mysql.如要连接mysql2,在database.php复制mysql整段配置,改名为mysql2,注意配置值从.env文件中取的
+    // protected $connection = 'mysql2';
 }
