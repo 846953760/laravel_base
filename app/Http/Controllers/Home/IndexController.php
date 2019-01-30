@@ -15,9 +15,20 @@ class IndexController extends Controller
      */
     public function index()
     {
-        echo "Home/Index/Index<br>";
+        // echo "Home/Index/Index<br>";
         $msg = '你好';
-        echo get_zh_len($msg);
+        // echo get_zh_len($msg);
+        $msg1 = '<span style="color: red">文章</span>标题1';
+        $re = array('msg'=>$msg,'msg1'=>$msg1);
+
+        //方法一:
+        // return view('Home.index',$re);
+         
+        //方法二:
+        // return view('Home.index')->with($re);
+        
+        //方法三:注意没有$符
+        return view('Home.index',compact('msg','msg1'));
     }
 
     /**
