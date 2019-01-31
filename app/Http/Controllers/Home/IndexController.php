@@ -28,7 +28,7 @@ class IndexController extends Controller
         // return view('Home.index')->with($re);
         
         //方法三:注意没有$符
-        return view('Home.index',compact('msg','msg1'));
+        return view('Home.child',compact('msg','msg1'));
     }
 
     /**
