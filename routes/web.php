@@ -26,3 +26,10 @@ Route::prefix('home')->namespace('Home')->group(function(){
 		Route::get('store','IndexController@store');
 	});
 });
+
+Route::prefix('admin')->namespace('Admin')->group(function(){
+	Route::prefix('index')->group(function(){
+		Route::get('index','IndexController@index');
+		Route::get('store','IndexController@store')->middleware('checksession');
+	});
+});

@@ -14,7 +14,7 @@ class IndexController extends Controller
      */
     public function index()
     {
-        //
+        echo 'Admin/Index/index';
     }
 
     /**
@@ -35,7 +35,7 @@ class IndexController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        echo "Admin/Index/store";
     }
 
     /**
