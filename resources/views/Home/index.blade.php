@@ -6,9 +6,9 @@
     <script src="{{ asset('js/jquery-1.8.0.js') }}"></script>
 </head>
 <body>
-    <div>{{$msg}} 使用{ {$msg} }输出</div>
-    <div>{{$msg1}} 使用{ {$msg1} }输出</div>
-    <div>{!!$msg1!!} 使用{ ! ! $msg1 ! ! }输出</div>
+    <div>{{$msg}} 使用@{{$msg}}输出</div>
+    <div>{{$msg1}} 使用@{{$msg1}}输出</div>
+    <div>{!!$msg1!!} 使用@{!!$msg1!!}输出</div>
     <span>account:</span><input type="text" name="account" class="account">
     <button class="get_account">获取account</button>
 </body>
