@@ -31,5 +31,7 @@ Route::prefix('admin')->namespace('Admin')->group(function(){
 	Route::prefix('index')->group(function(){
 		Route::get('index','IndexController@index');
 		Route::get('store','IndexController@store')->middleware('checksession');
+		// Route::get('update/{id}','IndexController@update')->middleware('web');
+		Route::get('update/{id}','IndexController@update');
 	});
 });

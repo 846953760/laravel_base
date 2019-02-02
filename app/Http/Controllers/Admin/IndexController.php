@@ -14,7 +14,8 @@ class IndexController extends Controller
      */
     public function index()
     {
-        echo 'Admin/Index/index';
+        // echo 'Admin/Index/index';
+        return view('admin.index');
     }
 
     /**
@@ -69,7 +70,8 @@ class IndexController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        echo $request->input('account').'<br>';
+        echo $request->input('password').'<br>';
     }
 
     /**
