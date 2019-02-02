@@ -34,11 +34,11 @@ class IndexController extends Controller
         // return response('hello world', 200)->cookie('name','value',1);  //设置响应的cookie,该cookie被openssl_encrypt加密,如果不想被加密,可以去EncryptCookies.php添加该cookie的name
         // return redirect('/home/index/show/1');      //重定向到/home/index/show/1中，注意必须在route中配置/home/index/show/{id}
         // return redirect()->away('https://www.baidu.com');    //重定向到外部地址，得使用away
-        // return view('admin.index');
         // return response()->view('admin.index',array('a','b'),200)->header('Content-Type','text/plain');
         // return response()->json(array('a'=>1,'b'=>2,'c'=>3));
         // return response()->json(['name'=>'lisi','age'=>20])->withCallback($request->input('callback')); //创建jsonp响应
-        return response()->download(public_path().'\robots.txt','111.txt');     //下载文件，第一个参数为文件的绝对路径,第二个参数为下载时要显示的文件名,第三个参数可以设置header头
+        // return response()->download(public_path().'\robots.txt','111.txt');     //下载文件，第一个参数为文件的绝对路径,第二个参数为下载时要显示的文件名,第三个参数可以设置header头
+        return view('admin.index');
     }
 
     /**
