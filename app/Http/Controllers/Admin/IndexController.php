@@ -14,6 +14,9 @@ class IndexController extends Controller
      */
     public function index()
     {
+        // echo url()->current();  //当前url
+        // echo url()->full();
+        // echo url()->previous();
         // return "Hello world";   //return 字符串
         // return array('a'=>1,'b'=>2,'c'=>3);     //return 数组，但是框架会自动转为json
         // return response('hello world', 200);        //自定义响应值和响应状态码
