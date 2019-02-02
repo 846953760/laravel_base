@@ -14,6 +14,12 @@ class IndexController extends Controller
      */
     public function index()
     {
+        // session('time',date('Y-m-d H:i:s'));     //取session的time字段，指定一个默认值
+        // session(['time'=>date('Y-m-d H:i:s')]);  //设置session的time字段
+        // session(['time1'=>time()]);              //设置session的time1字段
+        // session()->forget('time');               //清除session的time字段
+        // session()->regenerate();                 //重置session的sessionID
+        dump(session()->all());
         // echo url()->current();  //当前url
         // echo url()->full();
         // echo url()->previous();

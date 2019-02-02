@@ -31,9 +31,9 @@ return [
     |
     */
 
-    'lifetime' => env('SESSION_LIFETIME', 120),
+    'lifetime' => env('SESSION_LIFETIME', 120),     //session的有效期分钟
 
-    'expire_on_close' => false,
+    'expire_on_close' => true,                     //设置浏览器关闭是否清空session
 
     /*
     |--------------------------------------------------------------------------
@@ -46,7 +46,7 @@ return [
     |
     */
 
-    'encrypt' => false,
+    'encrypt' => false,                         //session加密开关
 
     /*
     |--------------------------------------------------------------------------
